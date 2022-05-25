@@ -36,7 +36,6 @@ class ClientController extends Controller
             $client = Client::create($request->all());
             return Response($client, 201);
         } catch (\Exception $e) {
-            Log::error($e->getMessage());
             throw new \Exception ($e, 500);
         }
     }
