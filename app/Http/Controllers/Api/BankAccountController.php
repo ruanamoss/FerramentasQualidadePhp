@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\BankAccountRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BankAccount;
@@ -39,10 +40,10 @@ class BankAccountController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param BankAccountRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BankAccountRequest $request)
     {
         try {
             $verifyAccount = $this->bankAccountService->verifyAccountExists($request);
@@ -50,7 +51,7 @@ class BankAccountController extends Controller
             if ($verifyAccount) {
                 return Response('Cliente já possui conta no banco', 200);
             }
-            
+
             $account = BankAccount::create($request->all());
             return Response($account, 201);
         } catch (\Exception $e) {
@@ -69,7 +70,7 @@ class BankAccountController extends Controller
     {
         try {
             $account = $this->bankAccountService->moneyWithdraw($request);
-            
+
             if (!$account['verify']) {
                 return Response($account['message'], 200);
             }
@@ -85,7 +86,7 @@ class BankAccountController extends Controller
     {
         try {
             $account = $this->bankAccountService->moneyDeposit($request);
-            
+
             if (!$account['verify']) {
                 return Response($account['message'], 200);
             }
