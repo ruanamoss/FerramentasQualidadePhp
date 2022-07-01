@@ -1,4 +1,6 @@
-php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html storage/app/public/coverage_test
-
-.env
-SAIL_XDEBUG_MODE=develop,debug,coverage
+docker run --rm
+-u "(id -g)"
+-v $(pwd):/opt
+-w /opt
+laravelsail/php80-composer:latest
+composer install --ignore-platform-reqs
