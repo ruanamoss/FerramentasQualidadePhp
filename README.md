@@ -42,5 +42,5 @@ vendor/bin/phpcbf app/ phpcs.xml --colors
 - Execução no terminal:
 ```
 composer require --dev phpstan/phpstan
-vendor/bin/phpstan analyse app
+vendor/bin/phpstan analyse app 
 ```
