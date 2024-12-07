@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Meu Projeto">
+    <description>Configuração do PHP_CodeSniffer para o projeto.</description>
+
+    <!-- Definindo padrões de codificação -->
+    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
+    <exclude name="app/Http/Controllers/DocumentosFiscaisController.php" />
+
+    <!-- Ignorar o aviso de comprimento de linha -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/> <!-- Limite recomendado -->
+            <property name="absoluteLineLimit" value="150"/> <!-- Limite absoluto, se necessário -->
+        </properties>
+    </rule>
+
+    <!-- Outras regras podem ser adicionadas aqui -->
+</ruleset>
